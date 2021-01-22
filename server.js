@@ -12,12 +12,17 @@ client.connect().then(res=>{
 
     const database = client.db("table-reservation");
     const collection = database.collection("user");
+    const factual=database.collection('factual')
     app.get('/user',async(req,res)=>{
         const test=await collection.findOne({firstName:"Arif"})
         console.log(test)
          res.send(test)
         })
-})
+        app.get('/',async(req,res)=>{
+            const test=await factual.findOne({})
+            console.log(test)
+             res.send(test)
+            })})
 
 const port=process.env.PORT||5000
 

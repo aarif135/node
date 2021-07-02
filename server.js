@@ -9,22 +9,10 @@ const client = new MongoClient(URI);
 connectDB();
 
 client.connect().then(res=>{
+    console.log(res)
+}).catch(e=>console.log(e))
 
-    const database = client.db("table-reservation");
-    const collection = database.collection("user");
-    const factual=database.collection('factual')
-    app.get('/user',async(req,res)=>{
-        const test=await collection.findOne({firstName:"Arif"})
-        console.log(test)
-         res.send(test)
-        })
-        app.get('/',async(req,res)=>{
-            const test=await factual.findOne({})
-            console.log(test)
-             res.send(test)
-            })})
-
-const port=process.env.PORT||5000
+const port=process.env.PORT||5001
 
 // app.use('/api/userModal',require('./endPoint/user'))
 app.listen(port,()=>{
